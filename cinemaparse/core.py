@@ -18,5 +18,15 @@ class CinemaParser:
     def print_raw_content(self):
         """content printer"""
         print(self.content.prettify())
+
+    def get_films_list(self):
+        """list of films"""
+        films_list = list()
+        all_films = self.content.find_all(class_="movie-plate")
+        for film in all_films:
+            films_list.append(film["attr-title"])
+        print(films_list[1:-1])
+
 CINEMA_ABOUT_MOSCOW = CinemaParser('msk')
 CINEMA_ABOUT_MOSCOW.extract_raw_content()
+CINEMA_ABOUT_MOSCOW.get_films_list()
